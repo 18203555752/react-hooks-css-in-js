@@ -1,24 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState, createContext } from 'react'
+import { Route, Link , Routes} from 'react-router-dom'
+import UseReducer from './component/reducer/useReducer'
+import UseContext from './component/useContext'
+import UseEffect from './component/UseEffect'
+import UseCallBack from './component/UseCallBack'
+import UseRef from './component/UseRef'
+import MyHook from './component/myHook'
+import CustomState from './custumHooks/useState'
 function App() {
+  const [count, setCount] = useState(0)
+  const handleCount = ()=> {
+    setCount((a)=> {
+      document.title = a+1
+      return a+1
+    })
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <CustomState></CustomState>
+
+
+
+        {/* <div>{count}</div>
+        <button onClick={handleCount}>count++</button> */}
+
+        {/* <UseReducer></UseReducer> */}
+        {/* <UseContext></UseContext> */}
+        {/* <UseEffect></UseEffect> */}
+
+        {/* <UseCallBack handleCount={handleCount}></UseCallBack> */}
+        {/* <UseRef></UseRef> */}
+        <div>
+          <Link to={'/myhook/zhangsan'}>myhook页面</Link>
+          <Link to={'/useContext'}>useContext页面</Link>
+        </div>
+        <div>
+          <Routes>
+            <Route path='/myhook/:name' element={<MyHook />}></Route>
+            <Route path='/useContext' element={<UseContext/>}></Route>
+          </Routes>
+        </div>
+      </div>
   );
 }
 
