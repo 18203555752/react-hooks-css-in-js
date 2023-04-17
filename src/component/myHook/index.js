@@ -11,9 +11,9 @@ export default function SetInterval() {
     console.log(passWord.value)
   }
   return <div> 
-    <div>
-      {post.title}
-      <div>
+    <div style={{width: 500, padding: 10}}>
+      <div style={{'fontWeight': 'bold'}}>{post.title}</div>
+      <div style={{margin: 10}}>
         {post.body}
       </div>
     </div>
